@@ -9,9 +9,10 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'search/home',
+    path: 'search/:param',
     component: SearchHomeComponent
-  }
+  },
+
 ];
 
 @NgModule({

@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SearchHomeComponent } from './search-home/search-home.component';
-import { TicketDetailComponent } from './ticket-detail/ticket-detail.component';
 import { WatchlistComponent } from './watchlist/watchlist.component';
 import { PortfolioComponent } from './portfolio/portfolio.component';
 import { SearchInputComponent } from './common/search-input/search-input.component';
@@ -17,15 +16,16 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { TickerDetailComponent } from './search-home/ticker-detail/ticker-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SearchHomeComponent,
-    TicketDetailComponent,
     WatchlistComponent,
     PortfolioComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    TickerDetailComponent,
   ],
   imports: [
     BrowserModule,

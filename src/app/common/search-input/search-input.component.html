@@ -1,5 +1,5 @@
-<form class="d-flex justify-content-center">
-  <mat-form-field class="example-full-width" appearance="fill">
+<form class="d-flex flex-column align-items-center justify-content-center">
+  <mat-form-field  appearance="fill">
     <mat-label>Enter stock ticker symbol</mat-label>
     <input type="text"
            placeholder=""
@@ -13,12 +13,15 @@
       <mat-icon>close</mat-icon>
     </button>
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      <mat-option *ngFor="let option of options" [value]="option.symbol">
-        {{option.symbol}}  {{option.description}}
+      <mat-option *ngFor="let option of options"
+                  [value]="option.symbol"
+                  (click)="handleSelectSymbol(option.symbol)">
+                  {{option.symbol}}  {{option.description}}
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
 </form>
+
 
 
 

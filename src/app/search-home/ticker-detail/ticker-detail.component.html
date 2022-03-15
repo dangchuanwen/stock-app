@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <div class="row d-flex flex-column align-items-center">
+    <div class="col col-12 col-sm-12 col-lg-6" *ngIf="company">
+      <div class="row d-flex justify-content-between" >
+        <div class="col-5">
+          <h1 class="m-0 fw-bold">
+            <span>{{ company.ticker }}</span>
+            <mat-icon>star_border</mat-icon>
+          </h1>
+          <h2 class="m-0" style="color: gray">{{ company.name }}</h2>
+          <p>{{ company.exchange }}</p>
+          <button class="btn btn-success">Buy</button>
+        </div>
+        <div class="col-2 d-flex justify-content-center align-items-start">
+          <img [src]="company.logo" width="60"/>
+        </div>
+        <div class="col-5 d-flex flex-column align-items-end">
+          <h1 class="m-0 fw-bold"
+              [style]="{color: company.values.dp > 0 ? 'green' : 'red'}">
+              {{ company.values.c | number: '1.2-2' }}
+          </h1>
+          <h3 class="m-0" [style]="{color: company.values.dp > 0 ? 'green' : 'red'}">
+            <mat-icon>trending_{{ company.values.dp > 0 ? 'up' : 'down' }}</mat-icon>
+            <span>{{ company.values.d | number: '1.2-2'}}({{percentage(company.values.dp)}})</span>
+          </h3>
+          <p class="m-0">{{ company.values.t * 1000 | date: 'yyyy-MM-dd hh:mm:ss' }}</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3 [style]="{color: isMarketOpen(company.values.t) ? 'green' : 'red'}"
+            class="text-center fw-bold">
+            {{ isMarketOpen(company.values.t) ? 'Market is Open' : 'Market Closed on ' + (company.values.t * 1000 | date: 'yyyy-MM-dd hh:mm:ss') }}
+        </h3>
+      </div>
+    </div>
+  </div>
+</div>

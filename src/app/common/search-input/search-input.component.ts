@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {observable, Observable} from "rxjs";
+import { Observable} from "rxjs";
 import {FormControl} from "@angular/forms";
+import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 
 export interface Stock {
   description: string;
@@ -21,10 +22,21 @@ interface Config {
   styleUrls: ['./search-input.component.css']
 })
 export class SearchInputComponent implements OnInit {
+  @Output() onSymbolChange = new EventEmitter<string>();
   input_timer:number | undefined;
   company_name = new FormControl('');
-  options: Stock[] = []
-  constructor(private http: HttpClient) { }
+  options: Stock[] = [];
+
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) {
+    router.events.forEach(event => {
+      if (event instanceof NavigationEnd) {
+        const param = this.route.snapshot.paramMap.get('param');
+        if (param !== 'home') {
+          this.company_name.setValue(param);
+        }
+      }
+    })
+  }
 
   ngOnInit(): void {
     this.company_name.valueChanges.subscribe(company_name => {
@@ -35,7 +47,7 @@ export class SearchInputComponent implements OnInit {
           return;
         }
         this.searchCompany(company_name).subscribe(stocks => this.options = stocks);
-      }, 300);
+      }, 200);
     })
   }
 
@@ -45,21 +57,20 @@ export class SearchInputComponent implements OnInit {
         observer.next([]);
         return;
       }
-
       this.http.get<Config>(`/api/stock/company/${company_name}`).subscribe(data => {
         observer.next(data.result);
       })
     })
   }
 
+  handleSelectSymbol(symbol: string): void {
+    this.onSymbolChange.emit(this.company_name.value);
+  }
+
   handleClickSearch(): void {
+    this.options = [];
     clearTimeout(this.input_timer);
-    if (!this.company_name.value) {
-      return;
-    }
-    this.searchCompany(this.company_name.value).subscribe(data => {
-      this.options = data;
-    })
+    this.onSymbolChange.emit(this.company_name.value);
   }
 
   handleClickClear(): void {

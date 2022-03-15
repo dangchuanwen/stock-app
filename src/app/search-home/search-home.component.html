@@ -5,6 +5,12 @@
     </div>
   </div>
   <div class="col col-10 col-sm-10 col-lg-3 m-auto">
-    <app-search-input></app-search-input>
+    <app-search-input (onSymbolChange)="handleSymbolChange($event)"></app-search-input>
+    <div class="alert alert-danger d-flex align-items-center justify-content-between" role="alert" *ngIf="alert.length > 0">
+      <span>{{ alert }}</span>
+      <mat-icon (click)="alert = ''">close</mat-icon>
+    </div>
   </div>
+  <app-ticker-detail *ngIf="param !== 'home'"
+                     [company]="company"></app-ticker-detail>
 </div>
