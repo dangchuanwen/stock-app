@@ -1,0 +1,16 @@
+.app-wrapper {
+  padding: 0;
+}
+.navbar-nav > li {
+  margin-right: 15px;
+  text-align: right;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 4vh;
+  background-color: #cec8c8;
+}

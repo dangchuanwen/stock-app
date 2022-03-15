@@ -1,0 +1,27 @@
+<form class="d-flex justify-content-center">
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>Enter stock ticker symbol</mat-label>
+    <input type="text"
+           placeholder=""
+           matInput
+           [formControl]="company_name"
+           [matAutocomplete]="auto">
+    <button matSuffix mat-icon-button (click)="handleClickSearch()">
+      <mat-icon>search</mat-icon>
+    </button>
+    <button matSuffix mat-icon-button (click)="handleClickClear()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option.symbol">
+        {{option.symbol}}  {{option.description}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+
+
+
+
+
+
