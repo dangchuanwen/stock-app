@@ -57,7 +57,10 @@ export class SearchHomeComponent implements OnInit {
         return;
       }
       this.company = company;
-    })
+    });
+    setTimeout(() => {
+      this.updateCompany();
+    }, 15000);
   }
 
   ngOnInit(): void {

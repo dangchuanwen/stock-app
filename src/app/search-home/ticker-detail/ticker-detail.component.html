@@ -30,8 +30,58 @@
       <div class="row">
         <h3 [style]="{color: isMarketOpen(company.values.t) ? 'green' : 'red'}"
             class="text-center fw-bold">
-            {{ isMarketOpen(company.values.t) ? 'Market is Open' : 'Market Closed on ' + (company.values.t * 1000 | date: 'yyyy-MM-dd hh:mm:ss') }}
+            {{ isMarketOpen(company.values.t) ? 'Market is Open' : 'Market Closed on ' + ((company.values.t + 5 * 60 ) * 1000 | date: 'yyyy-MM-dd hh:mm:ss') }}
         </h3>
+      </div>
+
+      <mat-tab-group mat-align-tabs="center">
+        <mat-tab label="Summary" >
+          <div class="row m-0">
+            <div class="col col-12 col-sm-12 col-lg-6">
+              <div class="row mt-4">
+                <p class="text-center text-lg-start">
+                  <strong class="me-1">High Price:</strong>
+                  <span>61.95</span>
+                </p>
+                <p class="text-center text-lg-start">
+                  <strong class="me-1">Low Price:</strong>
+                  <span>61.95</span>
+                </p>
+                <p class="text-center text-lg-start">
+                  <strong class="me-1">Open Price:</strong>
+                  <span>61.95</span>
+                </p>
+                <p class="text-center text-lg-start">
+                  <strong class="me-1">Prev. Close:</strong>
+                  <span>61.95</span>
+                </p>
+              </div>
+              <div class="row">
+                <h2 class="text-decoration-underline text-center">
+                  <a href="" style="color: #333333">About the company</a>
+                </h2>
+              </div>
+              <div class="row">
+                <p><strong>IPO Start Date</strong>: 2021-11-10</p>
+                <p><strong>Industry</strong>: Technology</p>
+                <p><strong>Webpage</strong>: <a href="">http://apple.com</a></p>
+                <p><strong>Company peers</strong></p>
+                <p>
+                  <a href="">APPle</a>
+                </p>
+              </div>
+            </div>
+            <div class="col col-12 col-sm-12 col-lg-6">2</div>
+          </div>
+        </mat-tab>
+        <mat-tab label="Top News"> Content 2 </mat-tab>
+        <mat-tab label="Charts"> Content 3 </mat-tab>
+        <mat-tab label="Insights">Content4</mat-tab>
+      </mat-tab-group>
+      <div class="container-fluid">
+        <div class="row">
+
+        </div>
       </div>
     </div>
   </div>

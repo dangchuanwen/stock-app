@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Company} from "../search-home.component";
 
+
+
 @Component({
   selector: 'app-ticker-detail',
   templateUrl: './ticker-detail.component.html',
@@ -14,9 +16,7 @@ export class TickerDetailComponent implements OnInit {
   }
 
   isMarketOpen(timestamp: number): boolean {
-    const date = new Date(timestamp * 1000);
-    const hour = date.getHours();
-    return  hour > 9 && hour < 13;
+    return Math.floor(Date.now() / 1000) > timestamp + 5 * 60;
   }
 
 

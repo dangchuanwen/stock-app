@@ -1,0 +1,8 @@
+.tab {
+  border-radius: 0;
+  border-bottom: 2px solid gainsboro;
+  color: #333333;
+}
+.tab-active {
+  border-color: #ef81ef;
+}
