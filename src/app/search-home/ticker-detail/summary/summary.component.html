@@ -1,0 +1,49 @@
+<div class="row m-0" *ngIf="company">
+  <div class="col col-12 col-sm-12 col-lg-6">
+    <div class="row mt-4">
+      <p class="text-center text-lg-start">
+        <strong class="me-1">High Price:</strong>
+        <span>{{ company.values.h }}</span>
+      </p>
+      <p class="text-center text-lg-start">
+        <strong class="me-1">Low Price:</strong>
+        <span>{{company.values.l}}</span>
+      </p>
+      <p class="text-center text-lg-start">
+        <strong class="me-1">Open Price:</strong>
+        <span>{{company.values.o}}</span>
+      </p>
+      <p class="text-center text-lg-start">
+        <strong class="me-1">Prev. Close:</strong>
+        <span>{{company.values.pc}}</span>
+      </p>
+    </div>
+    <div class="row">
+      <h2 class="text-decoration-underline text-center">
+        <a [href]="company.weburl" style="color: #333333">About the company</a>
+      </h2>
+    </div>
+    <div class="row">
+      <p><strong>IPO Start Date</strong>: {{company.ipo}}</p>
+      <p><strong>Industry</strong>: {{company.finnhubIndustry}}</p>
+      <p><strong>Webpage</strong>: <a [href]="company.weburl">{{company.weburl}}</a></p>
+      <p><strong>Company peers</strong></p>
+      <p>
+        <a *ngFor="let peer of company.peers"
+           [href]="'/search/' + peer"
+           class="text-decoration-none">
+          {{peer}},
+        </a>
+      </p>
+    </div>
+  </div>
+  <div class="col col-12 col-sm-12 col-lg-6">
+    <highcharts-chart
+      *ngIf="chartOptions"
+      [Highcharts]="Highcharts"
+      [options]="chartOptions"
+
+      style="width: 100%; height: 400px; display: block;"
+    ></highcharts-chart>
+  </div>
+</div>

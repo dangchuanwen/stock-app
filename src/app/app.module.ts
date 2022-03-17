@@ -18,6 +18,11 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { TickerDetailComponent } from './search-home/ticker-detail/ticker-detail.component';
 import {MatTabsModule} from "@angular/material/tabs";
+import {HighchartsChartModule} from "highcharts-angular";
+import { SummaryComponent } from './search-home/ticker-detail/summary/summary.component';
+import { TopNewsComponent } from './search-home/ticker-detail/top-news/top-news.component';
+
+
 
 @NgModule({
   declarations: [
@@ -27,6 +32,8 @@ import {MatTabsModule} from "@angular/material/tabs";
     PortfolioComponent,
     SearchInputComponent,
     TickerDetailComponent,
+    SummaryComponent,
+    TopNewsComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +48,8 @@ import {MatTabsModule} from "@angular/material/tabs";
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    MatTabsModule
+    MatTabsModule,
+    HighchartsChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]

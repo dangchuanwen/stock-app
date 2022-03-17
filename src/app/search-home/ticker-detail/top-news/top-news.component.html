@@ -1,0 +1,55 @@
+<div class="row m-0">
+  <ng-template #content >
+    <div *ngIf="activeNews">
+      <div class="modal-header d-flex flex-column">
+        <div class="container-fluid d-flex justify-content-between m-0">
+          <div class="row">
+            <h1 class="m-0">{{activeNews.source}}</h1>
+            <p class="m-0">{{activeNews.datetime | date: 'longDate'}}</p>
+          </div>
+          <mat-icon (click)="handleClose()">close</mat-icon>
+        </div>
+      </div>
+      <div class="modal-body m-0">
+        <div class="container-fluid">
+          <div class="row">
+            <h2 class="m-0">{{activeNews.headline}}</h2>
+            <p class="m-0">{{activeNews.summary}}</p>
+            <p class="m-0">
+              For more details click <a [href]="activeNews.url" target="_blank">here</a>
+            </p>
+            <div class="card mt-5">
+              <h3>Share</h3>
+              <p>
+                <a href="https://twitter.com/intent/tweet?text={{activeNews.headline}} - {{activeNews.url}}" target="_blank">
+                  <img src="https://img.icons8.com/color/2x/twitter.png" width="40" alt="" srcset="">
+                </a>
+                <a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u={{activeNews.url}}">
+                  <img src="https://img.icons8.com/color/2x/facebook.png" width="40" >
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </ng-template>
+
+  <div class="card mt-5 me-auto col-12 col-sm-12 col-lg-5"
+       *ngFor="let item of news"
+       (click)="handleClickNews(item)">
+    <div class="row g-0">
+      <div class="col-12 col-lg-6 d-flex align-items-center">
+        <img [src]="item.image" class="card-img-top" [alt]="item.headline">
+      </div>
+      <div class="col-12 col-lg-6">
+        <div class="card-body">
+          <p class="card-text">{{ item.headline }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

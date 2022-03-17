@@ -7,9 +7,6 @@
 }
 
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
   width: 100vw;
   height: 4vh;
   background-color: #cec8c8;

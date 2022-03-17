@@ -16,7 +16,7 @@ export class TickerDetailComponent implements OnInit {
   }
 
   isMarketOpen(timestamp: number): boolean {
-    return Math.floor(Date.now() / 1000) > timestamp + 5 * 60;
+    return Math.floor(Date.now() / 1000) < timestamp + 5 * 60;
   }
 
 

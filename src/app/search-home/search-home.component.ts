@@ -2,6 +2,18 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, NavigationEnd, Router} from "@angular/router";
 import {CompanyService} from "./company.service";
 
+export interface News {
+  category: string;
+  datetime: number;
+  headline: string;
+  id: number;
+  image: string;
+  related: string;
+  source: string;
+  summary: string;
+  url: string;
+}
+
 export interface Company {
   country: string;
   currency: string;
@@ -15,6 +27,17 @@ export interface Company {
   shareOutstanding: number;
   ticker: string;
   weburl: string;
+  peers: string[];
+  isOpen: boolean;
+  news: News[];
+  candlePrices: {
+    c: number[],
+    h: number[],
+    l: number[],
+    o: number[],
+    t: number[],
+    v: number[]
+  },
   values: {
     c: number;
     d: number;
@@ -58,9 +81,9 @@ export class SearchHomeComponent implements OnInit {
       }
       this.company = company;
     });
-    setTimeout(() => {
-      this.updateCompany();
-    }, 15000);
+    // setTimeout(() => {
+    //   this.updateCompany();
+    // }, 15000);
   }
 
   ngOnInit(): void {
